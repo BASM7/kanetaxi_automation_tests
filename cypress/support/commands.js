@@ -67,6 +67,8 @@ Cypress.Commands.add('pictureUpdate', (email, password) => {
     cy.xpath('/html/body/app-root/ion-app/ion-router-outlet/app-upload-docs/ion-footer/ion-toolbar/ion-grid/ion-row/ion-col[2]/ion-button').click()
     cy.wait(500)
     cy.xpath('/html/body/app-root/ion-app/ion-alert/div[2]/div[3]/button[2]').click()
+    cy.wait(15000)
+    cy.xpath('/html/body/app-root/ion-app/ion-router-outlet/app-upload-docs/ion-content/ion-slides/div/ion-slide[4]/ion-row/div[2]/ion-button').click()
 
 })
 
@@ -79,6 +81,19 @@ Cypress.Commands.add('testAlert', (email, password) => {
     cy.get('input[name="password"]').type(password);
 
     cy.get('ion-button[type=submit]').click();
+});
+
+Cypress.Commands.add('testResetPassword', (email) => {
+    cy.viewport(360, 740)
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    
+    cy.xpath('/html/body/app-root/ion-app/ion-router-outlet/app-login/ion-content/div[2]/ion-button[1]').click()
+    cy.wait(500)
+    cy.xpath('/html/body/app-root/ion-app/ion-router-outlet/app-reestablish-password/ion-content/form/ion-input/input').type(email);
+    //cy.get('input[type="email"]').type(email);
+    cy.wait(500)
+    cy.xpath('/html/body/app-root/ion-app/ion-router-outlet/app-reestablish-password/ion-content/form/div/ion-button').click();
 });
 
 beforeEach(() => {
