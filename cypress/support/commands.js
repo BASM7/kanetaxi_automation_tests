@@ -79,4 +79,9 @@ Cypress.Commands.add('testAlert', (email, password) => {
     cy.get('input[name="password"]').type(password);
 
     cy.get('ion-button[type=submit]').click();
-})
+});
+
+beforeEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+});
